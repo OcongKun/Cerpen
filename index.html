@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Cerpen dengan Background Music</title>
+    <style>
+      :root {
+        --bg: #0f1724;
+        --card: #0b1220;
+        --accent: #4b68fb;
+        --muted: #9aa4b2;
+      }
+      * {
+        box-sizing: border-box;
+        font-family: Inter, ui-sans-serif, system-ui, Segoe UI, Roboto,
+          "Helvetica Neue", Arial;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background: linear-gradient(180deg, #071025 0%, #0b1530 100%);
+        color: #e6eef8;
+      }
+      header {
+        padding: 20px;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.3);
+      }
+      header h1 {
+        margin: 0;
+        font-size: 26px;
+        color: #fff;
+      }
+      main {
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        overflow: hidden;
+      }
+      nav {
+        width: 200px;
+        background: rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        overflow-y: auto;
+      }
+      nav h2 {
+        font-size: 16px;
+        margin-top: 0;
+        color: #fff;
+      }
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      nav li {
+        margin: 8px 0;
+      }
+      nav a {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 14px;
+      }
+      nav a:hover {
+        color: #fff;
+      }
+      .content {
+        flex: 1;
+        padding: 20px;
+        overflow-y: auto;
+      }
+      .chapter {
+        display: none;
+        line-height: 1.6;
+      }
+      .chapter.active {
+        display: block;
+      }
+      footer {
+        padding: 16px;
+        background: rgba(0, 0, 0, 0.3);
+      }
+      .controls {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      button {
+        background: var(--accent);
+        border: none;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      button.ghost {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .progress {
+        height: 10px;
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 8px;
+        overflow: hidden;
+        flex: 1;
+        cursor: pointer;
+      }
+      .progress > i {
+        display: block;
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, var(--accent), #6ea1ff);
+      }
+      .time {
+        min-width: 80px;
+        text-align: right;
+        color: var(--muted);
+        font-size: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Cerpen: Hari Ini Seperti Kemarin</h1>
+    </header>
+    <main>
+      <nav>
+        <h2>Daftar Bab</h2>
+        <ul>
+          <li>
+            <a href="#" data-chapter="1"
+              >Bab 1 - Hujan & Hari-Hari di Bengkel</a
+            >
+          </li>
+          <li>
+            <a href="#" data-chapter="2">Bab 2 - Warung Kopi & Refleksi</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="content">
+        <div id="chapter-1" class="chapter active">
+          <h2>Bab 1 - Hujan & Hari-Hari di Bengkel</h2>
+          <p>
+            Hujan turun sejak sore, merayap di atap rumah kontrakan yang
+            karatan. Tetes-tetes air menemukan jalan masuk, jatuh satu-satu di
+            lantai semen, menimbulkan genangan kecil. Bima hanya duduk di
+            lantai, punggung menempel di dinding dingin, memandangi
+            langit-langit yang retaknya seperti peta jalan hidupnya—bercabang ke
+            mana-mana tapi tak pernah sampai tujuan.
+          </p>
+          <p>Hari ini seperti kemarin.</p>
+          <p>Dan kemarin seperti hari sebelumnya.</p>
+          <p>Rutinitasnya menelan waktu tanpa ampun.</p>
+          <p>
+            Pagi tadi ia bangun bukan karena alarm, tapi karena kebiasaan.
+            Matanya terbuka, tubuhnya bergerak seperti otomatis. Ia duduk di
+            pinggir kasur tipisnya, menatap lantai yang dingin. Tak ada
+            motivasi, tak ada semangat. Tapi ia tetap berdiri, mengguyur
+            tubuhnya dengan air sumur yang dinginnya menusuk, seakan mencoba
+            memastikan dirinya masih hidup.
+          </p>
+          <p>
+            Ia sarapan dengan nasi sisa semalam yang digoreng seadanya. Rasanya
+            hambar, tapi ia makan juga. Kemudian ia menyalakan motor tuanya,
+            berangkat ke bengkel tempatnya bekerja. Di jalan, ia berpapasan
+            dengan anak-anak sekolah yang berlari-lari, seragam mereka masih
+            rapi. Bima hanya memandangi mereka dari balik helm retaknya. Pernah,
+            dulu, ia seperti itu — punya impian yang tak sabar ingin dikejar.
+          </p>
+          <p>
+            Di bengkel, ia mengerjakan mobil orang lain, mendengar keluhan
+            pelanggan, dan mengangguk pada setiap kata yang keluar dari mulut
+            mereka. Senyum yang ia berikan adalah topeng; dalam kepalanya ia
+            hanya menghitung waktu sampai jam pulang.
+          </p>
+          <p>
+            Sore datang, bengkel tutup, dan ia menuju warung kopi di ujung
+            jalan. Warung itu sempit, dindingnya hitam karena asap kompor, radio
+            tuanya memutar lagu-lagu yang terdengar terlalu riang untuk sore
+            yang begini muram. Orang-orang tertawa. Bima duduk di pojok,
+            memandangi cangkir kopinya yang panas, membiarkan uapnya mengembun
+            di kaca matanya.
+          </p>
+          <p>
+            "Kau dapat kerjaan baru di kota," kata seorang pria di meja sebelah
+            pada temannya.
+          </p>
+          <p>"Gajinya lumayan, bisa nabung."</p>
+          <p>"Anakku minggu depan wisuda."</p>
+          <p>Bima tidak ikut bicara.</p>
+          <p>Ia hanya mendengar.</p>
+          <p>Semua orang tampak punya sesuatu yang ditunggu</p>
+          <p>
+            Kopi di depannya sudah dingin. Ia tetap meminumnya. Pahitnya
+            menempel di lidah. Rasanya seperti hidupnya sendiri: pahit, tapi
+            harus ditelan.
+          </p>
+        </div>
+        <div id="chapter-2" class="chapter">
+          <h2>Bab 2 - Warung Kopi & Refleksi</h2>
+          <p>
+            Malam tiba. Ia pulang ke kontrakan. Udara makin dingin, genangan air
+            hujan di lantai makin melebar. Ia duduk lagi di lantai, menyalakan
+            rokok. Puntung-puntung rokok menumpuk di kaleng kopi kosong di
+            sampingnya, seperti hitungan hari yang lewat tanpa arti.
+          </p>
+          <p>
+            Ia mengeluarkan ponselnya, membuka grup WhatsApp teman-teman SMA.
+            Ada yang memamerkan foto rumah baru, ada yang pamer anak pertama,
+            ada yang update perjalanan ke luar negeri.
+          </p>
+          <p>
+            "Bangga rasanya bisa keluar dari kota kecil ini." tulis salah satu
+            teman.
+          </p>
+          <p>
+            Bima menatap layar lama-lama, lalu mematikan ponselnya. Ia tidak
+            tahu apa yang harus ia katakan kalau mereka bertanya kabarnya.
+            Haruskah ia jujur, bahwa ia tidak baik-baik saja? Bahwa hidupnya
+            tidak bergerak kemana-mana? Bahwa setiap malam ia duduk begini,
+            mencoba merasa hidup tapi hanya menemukan sunyi?
+          </p>
+          <p>Ia pernah punya mimpi.</p>
+          <p>
+            Dulu ia ingin jadi mekanik di kota besar, buka bengkel sendiri, beli
+            rumah sederhana. Ia membayangkan ibunya akan datang berkunjung,
+            duduk di teras rumahnya sambil tersenyum bangga.
+          </p>
+          <p>Tapi ibunya meninggal dua tahun lalu.</p>
+          <p>Dan sejak hari itu, mimpinya ikut dikubur.</p>
+          <p>
+            Bima memejamkan mata, mendengar suara hujan di luar. Dalam
+            kegelapan, ia melihat bayangan ibunya, duduk di dapur, memasak
+            sambil bersenandung kecil. Rumah mereka dulu selalu ramai dengan
+            suara panci, bau bawang goreng, suara televisi dari ruang tamu.
+            Sekarang rumah itu sudah dijual untuk menutup hutang.
+          </p>
+          <p>Bima merasa dadanya semakin sesak.</p>
+          <p>Ia menarik napas panjang, tapi udara seperti tak cukup.</p>
+          <p>
+            Ia merebahkan tubuhnya di lantai basah, membiarkan dingin merayap ke
+            kulitnya. Langit-langit di atasnya seakan makin menjauh.
+          </p>
+          <p>"Besok kerja lagi." gumamnya pelan.</p>
+          <p>Tidak ada rencana. Tidak ada kejutan.</p>
+          <p>Besok hanya akan menjadi satu hari lain yang harus ia lewati.</p>
+          <p>
+            Hujan di luar berhenti. Kota kecil itu kembali sunyi, seperti
+            menahan napas.
+          </p>
+          <p>Bima tidak tidur malam itu.</p>
+          <p>Ia hanya menunggu pagi, seperti seseorang menunggu hukuman.</p>
+          <p>Dan ketika ayam berkokok, ia bangun lagi.</p>
+          <p>Hari baru datang.</p>
+          <p>Dan entah kenapa, rasanya persis seperti kemarin.</p>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <audio id="background-music" loop>
+        <source src="Radiohead - No Surprises.mp3" type="audio/mpeg" />
+      </audio>
+      <div class="controls">
+        <button id="play">Play ▶</button>
+        <button id="pause" class="ghost">Pause ❚❚</button>
+        <button id="stop" class="ghost">Stop ■</button>
+        <div class="progress" id="progress"><i id="progress-bar"></i></div>
+        <div class="time" id="time">00:00 / 00:00</div>
+      </div>
+    </footer>
+
+    <script>
+      const links = document.querySelectorAll("nav a");
+      const chapters = document.querySelectorAll(".chapter");
+      links.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const target = link.dataset.chapter;
+          chapters.forEach((ch) => ch.classList.remove("active"));
+          document.getElementById("chapter-" + target).classList.add("active");
+        });
+      });
+
+      const music = document.getElementById("background-music");
+      const playBtn = document.getElementById("play");
+      const pauseBtn = document.getElementById("pause");
+      const stopBtn = document.getElementById("stop");
+      const progress = document.getElementById("progress");
+      const progressBar = document.getElementById("progress-bar");
+      const timeEl = document.getElementById("time");
+
+      function fmt(t) {
+        if (!isFinite(t)) return "00:00";
+        const m = Math.floor(t / 60)
+          .toString()
+          .padStart(2, "0");
+        const s = Math.floor(t % 60)
+          .toString()
+          .padStart(2, "0");
+        return `${m}:${s}`;
+      }
+
+      function updateTime() {
+        timeEl.textContent = `${fmt(music.currentTime)} / ${fmt(
+          music.duration
+        )}`;
+        const pct = (music.currentTime / (music.duration || 1)) * 100;
+        progressBar.style.width = pct + "%";
+      }
+
+      music.addEventListener("timeupdate", updateTime);
+      playBtn.addEventListener("click", async () => {
+        try {
+          await music.play();
+        } catch (e) {}
+      });
+      pauseBtn.addEventListener("click", () => music.pause());
+      stopBtn.addEventListener("click", () => {
+        music.pause();
+        music.currentTime = 0;
+      });
+      progress.addEventListener("click", (e) => {
+        const rect = progress.getBoundingClientRect();
+        const pct = (e.clientX - rect.left) / rect.width;
+        music.currentTime = pct * music.duration;
+        updateTime();
+      });
+    </script>
+  </body>
+</html>
