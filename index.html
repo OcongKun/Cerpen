@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+
 <html lang="id">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
     <title>Cerpen dengan Background Music</title>
     <style>
       :root {
@@ -122,29 +123,73 @@
         color: var(--muted);
         font-size: 13px;
       }
+
+      .menu-btn {
+        font-size: 24px;
+        cursor: pointer;
+        background: none;
+        border: none;
+        color: white;
+        margin-left: 10px;
+      }
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: -250px;
+        width: 250px;
+        height: 100%;
+        background: #111;
+        color: white;
+        transition: left 0.3s ease;
+        padding-top: 60px;
+        z-index: 1000;
+      }
+      .sidebar.active {
+        left: 0;
+      }
+      .sidebar ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .sidebar ul li {
+        padding: 15px;
+        border-bottom: 1px solid #333;
+      }
+      .sidebar ul li a {
+        color: white;
+        text-decoration: none;
+        display: block;
+      }
+      main {
+        margin-left: 0;
+        transition: margin-left 0.3s ease;
+      }
     </style>
   </head>
   <body>
     <header>
       <h1>Cerpen: Hari Ini Seperti Kemarin</h1>
+      <button class="menu-btn" onclick="toggleMenu()">☰</button>
     </header>
+    <div class="sidebar" id="sidebar">
+      <ul>
+        <li>
+          <a href="#" onclick="showChapter(1)"
+            >Bab 1 - Hujan &amp; Hari-Hari di Bengkel</a
+          >
+        </li>
+        <li>
+          <a href="#" onclick="showChapter(2)"
+            >Bab 2 - Warung Kopi &amp; Refleksi</a
+          >
+        </li>
+      </ul>
+    </div>
     <main>
-      <nav>
-        <h2>Daftar Bab</h2>
-        <ul>
-          <li>
-            <a href="#" data-chapter="1"
-              >Bab 1 - Hujan & Hari-Hari di Bengkel</a
-            >
-          </li>
-          <li>
-            <a href="#" data-chapter="2">Bab 2 - Warung Kopi & Refleksi</a>
-          </li>
-        </ul>
-      </nav>
       <div class="content">
-        <div id="chapter-1" class="chapter active">
-          <h2>Bab 1 - Hujan & Hari-Hari di Bengkel</h2>
+        <div class="chapter active" id="chapter-1">
+          <h2>Bab 1 - Hujan &amp; Hari-Hari di Bengkel</h2>
           <p>
             Hujan turun sejak sore, merayap di atap rumah kontrakan yang
             karatan. Tetes-tetes air menemukan jalan masuk, jatuh satu-satu di
@@ -201,8 +246,8 @@
             harus ditelan.
           </p>
         </div>
-        <div id="chapter-2" class="chapter">
-          <h2>Bab 2 - Warung Kopi & Refleksi</h2>
+        <div class="chapter" id="chapter-2">
+          <h2>Bab 2 - Warung Kopi &amp; Refleksi</h2>
           <p>
             Malam tiba. Ia pulang ke kontrakan. Udara makin dingin, genangan air
             hujan di lantai makin melebar. Ia duduk lagi di lantai, menyalakan
@@ -262,18 +307,17 @@
       </div>
     </main>
     <footer>
-      <audio id="background-music" loop>
+      <audio id="background-music" loop="">
         <source src="Radiohead - No Surprises.mp3" type="audio/mpeg" />
       </audio>
       <div class="controls">
         <button id="play">Play ▶</button>
-        <button id="pause" class="ghost">Pause ❚❚</button>
-        <button id="stop" class="ghost">Stop ■</button>
+        <button class="ghost" id="pause">Pause ❚❚</button>
+        <button class="ghost" id="stop">Stop ■</button>
         <div class="progress" id="progress"><i id="progress-bar"></i></div>
         <div class="time" id="time">00:00 / 00:00</div>
       </div>
     </footer>
-
     <script>
       const links = document.querySelectorAll("nav a");
       const chapters = document.querySelectorAll(".chapter");
@@ -330,6 +374,17 @@
         music.currentTime = pct * music.duration;
         updateTime();
       });
+
+      const sidebar = document.getElementById("sidebar");
+      function toggleMenu() {
+        sidebar.classList.toggle("active");
+      }
+      function showChapter(num) {
+        chapters.forEach((ch) => ch.classList.remove("active"));
+        document.getElementById("chapter-" + num).classList.add("active");
+        sidebar.classList.remove("active");
+      }
     </script>
   </body>
 </html>
+
